@@ -5,11 +5,9 @@ const About = () => {
   return (
     <div>
       About Page
-
-<Link to="/">Home</Link>
-      
-    </div>
-  )
+            <Link to="/">Home</Link>
+        </div>
+    )
 }
 
 export default About
