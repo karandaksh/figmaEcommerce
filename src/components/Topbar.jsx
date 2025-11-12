@@ -5,10 +5,12 @@ const Topbar = () => {
     const [lang, setLang] = useState('English');
     const handleChange = (event) => {
         setLang(event.target.value)
+        console.log(event.target.value);
+        
     }
     return (
         <>
-            <div className='bg-black text-white text-sm py-4'>
+            <div className='bg-black text-white text-sm py-4 md:px-20 '>
                 <div className=" xl:container grid grid-cols-12 gap-4 mx-auto ">
                     <div className="AdHeading col-span-6 col-start-5">
                         <p className='inline-block'>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!</p>
