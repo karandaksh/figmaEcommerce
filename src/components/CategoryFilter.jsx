@@ -3,21 +3,14 @@ import { href, Link } from 'react-router'
 
 const CategoryFilter = () => {
 
-    //     const [openSubMenu, setOpenSubMenu] = useState(null)
 
-    // const showSubMenu = (id) => {
-    //         setOpenSubMenu((prev) => (prev === id ? null : id))
-    //     }
+    const [openSubMenu, setOpenSubMenu] = useState(null);
 
 
-  
-  const [openSubMenu, setOpenSubMenu] = useState(null);
 
-  const toggleSubMenu = (id) => {
-    setOpenSubMenu((prev) => (prev === id ? null : id));
-  };
-
-
+    function ShowToggle(id) {
+        setOpenSubMenu(openSubMenu === id ? null : id)
+    }
 
     const FilterMenu = [
         {
@@ -77,70 +70,45 @@ const CategoryFilter = () => {
         },
     ];
 
-
-
-
-
     return (
+
         <>
 
-
-            {/* <div className="category-filter">
-                {FilterMenu.map((menu) => (
-                    <div key={menu.id} className="menu-item">
-                        {menu.subMenu ? (
-                            <div className="dropdown" id={menu.id} onClick={(e) => { showSubMenu(e.currentTarget.id) }} >
-                                {menu.menuName}
-                                <i className="fa-solid fa-arrow-right"></i>
-                                <ul className={`submenu ${openSubMenu === menu.id ? "block" : "hidden"}`}>
-                                    {menu.subMenu.map((sub) => (
-                                        <li key={sub.id}>
-                                            <Link href={sub.href}>{sub.subMenuName}</Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ) : (
-                            <Link href={menu.href}>{menu.menuName}</Link>
-                        )}
-                    </div>
-                ))}
-            </div> */}
-
-
             <div className="category-filter">
-                {FilterMenu.map((menu) => (
-                    <div key={menu.id} className="menu-item">
-                        {menu.subMenu ? (
-                            <>
-                                {/* Only the header is clickable */}
-                                <div
-                                    className="menu-header"
-                                    onClick={() => toggleSubMenu(menu.id)}
-                                    style={{ cursor: "pointer" }}
-                                >
-                                    {menu.menuName} <i className="fa-solid fa-arrow-right"></i>
-                                </div>
-
-                                {/* Submenu */}
-                                <ul className={`submenu ${openSubMenu === menu.id ? "block" : "hidden"}`}>
-                                    {menu.subMenu.map((sub) => (
-                                        <li key={sub.id}>
-                                            <Link href={sub.href}>{sub.subMenuName}</Link>
+                {FilterMenu.map((menus) => (
+                    <ul key={menus.id}>
+                        {menus.subMenu ? (
+                            <li className="dropdownParent" id={menus.id} onClick={() => ShowToggle(menus.id)}>
+                                <span>{menus.menuName}</span>
+                                <i className="fa-solid fa-arrow-right pl-5"></i>
+                                <ul className={`dropdown pl-3 ${openSubMenu === menus.id ? "block" : "hidden"}`}>
+                                    {menus.subMenu.map((subMenu) => (
+                                        <li key={subMenu.id}>
+                                            <Link to={subMenu.href} id={subMenu.id}>
+                                                {subMenu.subMenuName}
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>
-                            </>
+                            </li>
                         ) : (
-                            <Link href={menu.href}>{menu.menuName}</Link>
+                            <li>
+                                <Link to={menus.href}>{menus.menuName}</Link>
+                            </li>
                         )}
-                    </div>
+                    </ul>
                 ))}
             </div>
 
 
+
+
+
         </>
+
+
     )
 }
+
 
 export default CategoryFilter
