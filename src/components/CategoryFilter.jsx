@@ -6,8 +6,6 @@ const CategoryFilter = () => {
 
     const [openSubMenu, setOpenSubMenu] = useState(null);
 
-
-
     function ShowToggle(id) {
         setOpenSubMenu(openSubMenu === id ? null : id)
     }
@@ -81,7 +79,7 @@ const CategoryFilter = () => {
                             <li className="dropdownParent" id={menus.id} onClick={() => ShowToggle(menus.id)}>
                                 <span>{menus.menuName}</span>
                                 <i className="fa-solid fa-arrow-right pl-5"></i>
-                                <ul className={`dropdown pl-3 ${openSubMenu === menus.id ? "block" : "hidden"}`}>
+                                <ul  className={`dropdown list-disc pl-6 ${openSubMenu === menus.id ? "block" : "hidden"}`}>
                                     {menus.subMenu.map((subMenu) => (
                                         <li key={subMenu.id}>
                                             <Link to={subMenu.href} id={subMenu.id}>
