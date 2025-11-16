@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { href, Link } from 'react-router'
 
-const CategoryFilter = () => {
+const LeftSideLayout = () => {
 
 
     const [openSubMenu, setOpenSubMenu] = useState(null);
@@ -73,29 +73,30 @@ const CategoryFilter = () => {
         <>
 
             <div className="category-filter">
-                {FilterMenu.map((menus) => (
-                    <ul key={menus.id}>
-                        {menus.subMenu ? (
-                            <li className="dropdownParent" id={menus.id} onClick={() => ShowToggle(menus.id)}>
-                                <span>{menus.menuName}</span>
-                                <i className="fa-solid fa-arrow-right pl-5"></i>
-                                <ul  className={`dropdown list-disc pl-6 ${openSubMenu === menus.id ? "block" : "hidden"}`}>
-                                    {menus.subMenu.map((subMenu) => (
-                                        <li key={subMenu.id}>
-                                            <Link to={subMenu.href} id={subMenu.id}>
-                                                {subMenu.subMenuName}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </li>
-                        ) : (
-                            <li>
+                <ul>
+                    {FilterMenu.map((menus) => (
+                        <li key={menus.id} className='py-1 mb-1 pr-3'>
+                            {menus.subMenu ? (
+                                <span className="dropdownParent " id={menus.id} onClick={() => ShowToggle(menus.id)}>
+                                    {menus.menuName}
+                                    <i className="fa-solid fa-arrow-right pl-5"></i>
+                                    <ul className={`dropdown list-disc pl-6 ${openSubMenu === menus.id ? "block" : "hidden"}`}>
+                                        {menus.subMenu.map((subMenu) => (
+                                            <li key={subMenu.id}>
+                                                <Link to={subMenu.href} id={subMenu.id}>
+                                                    {subMenu.subMenuName}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </span>
+                            ) : (
                                 <Link to={menus.href}>{menus.menuName}</Link>
-                            </li>
-                        )}
-                    </ul>
-                ))}
+
+                            )}
+                        </li>
+                    ))}
+                </ul>
             </div>
 
 
@@ -109,4 +110,4 @@ const CategoryFilter = () => {
 }
 
 
-export default CategoryFilter
+export default LeftSideLayout

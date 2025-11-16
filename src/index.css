@@ -1,7 +1,50 @@
 @import "tailwindcss";
 
 
-/* :root{
-  background-color: black;
-  color: #fff;
-} */
+@import "../node_modules/slick-carousel/slick/slick.css";
+@import "../node_modules/slick-carousel/slick/slick-theme.css";
+
+
+
+/* Custom Slick Slider Dots */
+
+
+:root{
+  --redColor : #db4444;
+  --greyColor : #F5F5F5;
+}
+
+
+
+
+
+
+.CarouselSection .slick-dots {
+  bottom: 10px;
+}
+
+
+.CarouselSection .slick-dots>li.slick-active button:before {
+  opacity: 100%;
+  background: var(--redColor);
+  border: 2px solid #ffffff;
+
+}
+
+.CarouselSection .slick-dots li button:before {
+  line-height: 20px;
+  position: absolute;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  content: '';
+  opacity: .50;
+  color: black;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* border: 2px solid #ffffff; */
+  top: 33%;
+  left: 30%;
+  border-radius: 50%;
+  background: #ffffff;
+}
