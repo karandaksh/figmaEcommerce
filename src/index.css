@@ -48,3 +48,18 @@
   border-radius: 50%;
   background: #ffffff;
 }
+
+.cardParent:hover{
+  /* border-radius: 20px 20px 0px 0px; */
+  box-shadow: 2px 0px 19px 2px #00000036;
+  transition: 0.1s all ease-in-out;
+}
+
+.cardParent:hover .AddToCart{
+  bottom: 0%;
+  /* transition: 0.2s all ease-in-out; */
+}
+
+.AddToCart{
+  transition: 0.2s all ease-in-out;
+}
