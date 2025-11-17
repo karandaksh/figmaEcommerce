@@ -5,6 +5,8 @@ import SectionHeading from '../components/SectionHeading'
 import PageSection from '../components/PageSection'
 import Card from '../components/Card'
 import Slider from 'react-slick'
+import { Link } from 'react-router'
+import Button from '../components/Button'
 
 const Home = () => {
 
@@ -39,7 +41,9 @@ const Home = () => {
   // }
 
 
-
+  function handleClick() {
+    console.log('jfhbsi');
+  }
 
   return (
     <>
@@ -66,7 +70,11 @@ const Home = () => {
               <Card />
             </Slider>
 
+            <div className="text-center mt-5">
+              <Button btnText="View All Products" className="mx-auto text-center" onClick={handleClick} />
+            </div>
           </div>
+
 
 
         </div>
