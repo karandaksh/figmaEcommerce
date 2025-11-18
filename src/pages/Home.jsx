@@ -8,9 +8,53 @@ import Slider from 'react-slick'
 import { Link } from 'react-router'
 import Button from '../components/Button'
 
+
+
+
 const Home = () => {
 
+  let ApiUrl = 'https://dummyjson.com/products';
 
+  let AllCardData = [];
+
+  async function CardDatas() {
+    try {
+      let dataget = await fetch(ApiUrl);
+      if (!dataget.ok) {
+        throw Error("APi Error" + dataget.status)
+      }
+      let dataJson = await dataget.json()
+      AllCardData = dataJson;
+    }
+    catch (err) {
+      console.log("I Have A Error", err.message); 
+    }
+  }
+
+
+
+
+  // const CardDatas = async () => {
+
+  //   try {
+  //     let data = await fetch(ApiUrl);
+  //     if (!data.ok) throw Error("Api Not Working Properly" + res.status);
+  //     return await data.json();
+  //   }
+  //   catch (err) {
+  //     return { error: err.message }
+  //   }
+  // }
+
+
+
+  // CardDatas().then(result => {
+  //   if (result.error) {
+  //     console.log("Error:", result.error);
+  //   } else {
+  //     console.log(result);
+  //   }
+  // });
 
 
 
@@ -20,30 +64,13 @@ const Home = () => {
     arrows: true,
     slidesToShow: 4.5,
     pauseOnHover: true,
-    // slidesToScroll: 1,
     centerMode: false,
-
     swipeToSlide: true,
     autoplay: false,
     speed: 1000, //animation speed of move
     autoplaySpeed: 30000, //time of slide stop
   };
 
-
-  // let settings = {
-  //   slidesToShow: 4.5,
-  //   slidesToScroll: 1,
-  //   infinite: true,
-  //   arrows: true,
-  //   centerMode: false,
-  //   cssEase: "linear",
-  //   swipeToSlide: true,
-  // }
-
-
-  function handleClick() {
-    console.log('jfhbsi');
-  }
 
   return (
     <>
@@ -71,7 +98,7 @@ const Home = () => {
             </Slider>
 
             <div className="text-center mt-5">
-              <Button btnText="View All Products" className="mx-auto text-center" onClick={handleClick} />
+              <Button btnText="View All Products" className="mx-auto text-center" onClick={CardDatas} />
             </div>
           </div>
 
