@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import LeftSideLayout from '../components/LeftSideLayout'
 import RightSideLAyout from '../components/RightSideLAyout'
 import SectionHeading from '../components/SectionHeading'
@@ -9,55 +9,134 @@ import { Link } from 'react-router'
 import Button from '../components/Button'
 
 
+// useEffect(() => {
+
+//   async function CardDatas() {
+//     try {
+//       let dataget = await fetch(ApiUrl);
+//       if (!dataget.ok) {
+//         throw Error("APi Error" + dataget.status)
+//       }
+//       let dataJson = await dataget.json()
+//       // AllCardData = dataJson.products;
+//       // setAllCardData(dataJson.products)
+//       setAllCardData(dataJson.products);
+
+//       // setShow(AllCardData.slice(slimit,elimit))
+//       setShow(dataJson.products.slice(slimit, elimit))
+
+//       // dataJson.products.slice
+
+//       console.log(show);
+//       setSlimit(10)
+//       setElimit(20)
+
+
+//     }
+//     catch (err) {
+//       console.log("I Have A Error", err.message);
+//     }
+//   }
+//   CardDatas()
+// }, [])
+
+
+// function LoadData() {
+//   if (AllCardData.length > show.length) {
+
+//     const nextItems = AllCardData.slice(slimit, elimit)
+
+//     setShow((prev) => [...prev, ...nextItems])
+//     setSlimit((prev) => (prev += 10));
+//     setElimit((prev) => (prev += 10));
+
+//     console.log("tnbifnbii", AllCardData.length, show.length );
+
+//   }
+// }
+
+
+
 
 
 const Home = () => {
 
+  const [slimit, setSlimit] = useState(0);
+  const [elimit, setElimit] = useState(10);
+  const [show, setShow] = useState([]);
+  const [AllCardData, setAllCardData] = useState([]);
+
   let ApiUrl = 'https://dummyjson.com/products';
 
-  let AllCardData = [];
 
-  async function CardDatas() {
-    try {
-      let dataget = await fetch(ApiUrl);
-      if (!dataget.ok) {
-        throw Error("APi Error" + dataget.status)
+  useEffect(() => {
+    async function CardData() {
+      try {
+        let data = await fetch(ApiUrl);
+        if (!data.ok) {
+          throw Error("Api Not Working Properly " + data.status);
+        }
+
+        let dataJson = await data.json();
+        setShow(dataJson.products.slice(slimit, elimit));
+        setAllCardData(dataJson.products);
+        console.log(dataJson, Array.isArray(dataJson.products));
+        setSlimit((prev) => prev += 10);
+        setElimit((prev) => prev += 10);
       }
-      let dataJson = await dataget.json()
-      AllCardData = dataJson;
+      catch (err) {
+        console.error("Api Error :- " + err.message);
+      }
     }
-    catch (err) {
-      console.log("I Have A Error", err.message); 
+    CardData()
+
+
+     console.log("Updated show array length:", show.length);
+    
+  }, [])
+
+
+
+
+
+
+
+
+  function LoadData() {
+    console.log("working",AllCardData.length, show.length, slimit, elimit);
+    if (show.length != AllCardData.length) {
+      setShow((prev)=> prev   = [...prev , ...AllCardData.slice(slimit, elimit)]);
+      setSlimit((prev)=> prev += 10);
+      setElimit((prev)=> prev += 10);
+      console.log("Ending Startes :- ",AllCardData.length, show.length);
+    }
+    else{
+      console.log("Data Finish");
+      
     }
   }
 
 
 
+  
 
-  // const CardDatas = async () => {
+  // function LoadData() {
+  //   console.log("working", AllCardData.length, show.length, slimit, elimit);
 
-  //   try {
-  //     let data = await fetch(ApiUrl);
-  //     if (!data.ok) throw Error("Api Not Working Properly" + res.status);
-  //     return await data.json();
-  //   }
-  //   catch (err) {
-  //     return { error: err.message }
-  //   }
+  //   const nextSlide = AllCardData.slice(slimit, elimit)
+
+
+  //   if (nextSlide.length === 0) return;
+  //   setShow((prev) => prev = [...prev, ...nextSlide]);
+  //   setSlimit((prev) => prev += 10);
+  //   setElimit((prev) => prev += 10);
+  //   console.log("Ending Startes :- ", AllCardData.length, show.length);
+
+
   // }
-
-
-
-  // CardDatas().then(result => {
-  //   if (result.error) {
-  //     console.log("Error:", result.error);
-  //   } else {
-  //     console.log(result);
-  //   }
-  // });
-
-
-
+  
+  
+  
   let settings = {
     dots: false,
     infinite: false,
@@ -98,7 +177,7 @@ const Home = () => {
             </Slider>
 
             <div className="text-center mt-5">
-              <Button btnText="View All Products" className="mx-auto text-center" onClick={CardDatas} />
+              <Button btnText="View All Products" className="mx-auto text-center" onClick={LoadData} />
             </div>
           </div>
 
