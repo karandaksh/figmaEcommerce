@@ -62,12 +62,11 @@ import Button from '../components/Button'
 const Home = () => {
 
   const [slimit, setSlimit] = useState(0);
-  const [elimit, setElimit] = useState(10);
   const [show, setShow] = useState([]);
+  const [elimit, setElimit] = useState(10);
   const [AllCardData, setAllCardData] = useState([]);
 
   let ApiUrl = 'https://dummyjson.com/products';
-
 
   useEffect(() => {
     async function CardData() {
@@ -76,67 +75,36 @@ const Home = () => {
         if (!data.ok) {
           throw Error("Api Not Working Properly " + data.status);
         }
-
         let dataJson = await data.json();
         setShow(dataJson.products.slice(slimit, elimit));
         setAllCardData(dataJson.products);
-        console.log(dataJson, Array.isArray(dataJson.products));
-        setSlimit((prev) => prev += 10);
-        setElimit((prev) => prev += 10);
       }
       catch (err) {
         console.error("Api Error :- " + err.message);
       }
     }
     CardData()
-
-
-     console.log("Updated show array length:", show.length);
-    
   }, [])
 
 
-
-
-
-
-
-
   function LoadData() {
-    console.log("working",AllCardData.length, show.length, slimit, elimit);
-    if (show.length != AllCardData.length) {
-      setShow((prev)=> prev   = [...prev , ...AllCardData.slice(slimit, elimit)]);
-      setSlimit((prev)=> prev += 10);
-      setElimit((prev)=> prev += 10);
-      console.log("Ending Startes :- ",AllCardData.length, show.length);
+    const nextSlimit = slimit + 10;
+    const nextElimit = elimit + 10;
+
+    if (nextSlimit <= AllCardData.length) {
+      const nextBatch = AllCardData.slice(elimit, nextElimit);
+      setShow(prev => [...prev, ...nextBatch]);
+      setSlimit(nextSlimit);
+      setElimit(nextElimit);
     }
-    else{
-      console.log("Data Finish");
-      
+    else {
+      console.log("All Data Show ");
     }
   }
 
 
 
-  
 
-  // function LoadData() {
-  //   console.log("working", AllCardData.length, show.length, slimit, elimit);
-
-  //   const nextSlide = AllCardData.slice(slimit, elimit)
-
-
-  //   if (nextSlide.length === 0) return;
-  //   setShow((prev) => prev = [...prev, ...nextSlide]);
-  //   setSlimit((prev) => prev += 10);
-  //   setElimit((prev) => prev += 10);
-  //   console.log("Ending Startes :- ", AllCardData.length, show.length);
-
-
-  // }
-  
-  
-  
   let settings = {
     dots: false,
     infinite: false,
@@ -175,6 +143,16 @@ const Home = () => {
               <Card />
               <Card />
             </Slider>
+
+
+            {
+              show.map((cdData) => (
+                <div className='parentCardDiv' key={cdData.id}>
+                  <p> {cdData.id} :-  {cdData.title}</p>
+                </div>
+              ))
+            }
+
 
             <div className="text-center mt-5">
               <Button btnText="View All Products" className="mx-auto text-center" onClick={LoadData} />
