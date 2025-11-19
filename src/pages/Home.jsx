@@ -66,6 +66,7 @@ const Home = () => {
   const [elimit, setElimit] = useState(10);
   const [AllCardData, setAllCardData] = useState([]);
 
+
   let ApiUrl = 'https://dummyjson.com/products';
 
   useEffect(() => {
@@ -104,9 +105,45 @@ const Home = () => {
 
 
 
+  function getOriginalPrice(disCountPercent, afterdisCountPrice) {
+    const originalPrice = afterdisCountPrice / (1 - disCountPercent / 100)
+    return originalPrice.toFixed(2);
+  }
+
+
+  // function removeextradiv() {
+  //   const PrentElement = document.querySelector(".cardParent");
+  //   if (!PrentElement) return
+  //   else {
+  //     let parent = PrentElement.parentElement
+  //     if (parent.classList.contains("slick-slide")) return
+  //     parent.replaceWith(PrentElement);
+  //   }
+  // }
+
+
+
+  function removeextradiv() {
+    const parentElements = document.querySelectorAll(".cardParent");
+
+    parentElements.forEach(el => {
+      let parent = el.parentElement;
+      if (!parent) return;
+      if (parent.classList.contains("slick-slide")) return;
+      parent.replaceWith(el);
+    });
+  }
+
+
+
+
+
+
+
 
   let settings = {
     dots: false,
+    // infinite: true,
     infinite: false,
     arrows: true,
     slidesToShow: 4.5,
@@ -117,6 +154,9 @@ const Home = () => {
     speed: 1000, //animation speed of move
     autoplaySpeed: 30000, //time of slide stop
   };
+
+  removeextradiv()
+
 
 
   return (
@@ -136,27 +176,24 @@ const Home = () => {
           <PageSection sectionType="Today's" sectionHeading="Flash Sales" />
           <div className='card_slider'>
             <Slider {...settings}>
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
+              {
+                show.map((product) => (
+                  <Card cardDiscountPercentage={product.discountPercentage} cardIMg={product.images[0]} cardTitle={product.title} cardPrice={product.price} cardOriginalPrice={getOriginalPrice(product.discountPercentage, product.price)} cardReview={product.reviews.length} />
+                ))
+              }
+              {show.length < AllCardData.length &&
+
+                <Button btnText="View All Products" className="mx-auto text-center cardParent " onClick={LoadData} />
+              }
+
             </Slider>
 
 
-            {
-              show.map((cdData) => (
-                <div className='parentCardDiv' key={cdData.id}>
-                  <p> {cdData.id} :-  {cdData.title}</p>
-                </div>
-              ))
-            }
 
 
-            <div className="text-center mt-5">
+            {/* <div className="text-center mt-5">
               <Button btnText="View All Products" className="mx-auto text-center" onClick={LoadData} />
-            </div>
+            </div> */}
           </div>
 
 

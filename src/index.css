@@ -49,6 +49,10 @@
   background: #ffffff;
 }
 
+
+
+
+
 .cardParent:hover{
   /* border-radius: 20px 20px 0px 0px; */
   box-shadow: 2px 0px 19px 2px #00000036;
@@ -62,4 +66,16 @@
 
 .AddToCart{
   transition: 0.2s all ease-in-out;
+}
+
+
+.card_slider .slick-prev:before,.card_slider .slick-next:before{
+  line-height: 1.1;
+}
+.card_slider .slick-prev,.card_slider .slick-next{
+background-color: black;
+border-radius: 100%;
+width: 19px;
+height: 19px;
+
 }
