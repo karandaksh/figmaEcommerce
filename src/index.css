@@ -9,9 +9,9 @@
 /* Custom Slick Slider Dots */
 
 
-:root{
-  --redColor : #db4444;
-  --greyColor : #F5F5F5;
+:root {
+  --redColor: #db4444;
+  --greyColor: #F5F5F5;
 }
 
 
@@ -53,29 +53,44 @@
 
 
 
-.cardParent:hover{
+.cardParent:hover {
   /* border-radius: 20px 20px 0px 0px; */
   box-shadow: 2px 0px 19px 2px #00000036;
   transition: 0.1s all ease-in-out;
 }
 
-.cardParent:hover .AddToCart{
+.cardParent:hover .AddToCart {
   bottom: 0%;
   /* transition: 0.2s all ease-in-out; */
 }
 
-.AddToCart{
+.AddToCart {
   transition: 0.2s all ease-in-out;
 }
 
 
-.card_slider .slick-prev:before,.card_slider .slick-next:before{
+.card_slider .slick-prev:before,
+.card_slider .slick-next:before {
   line-height: 1.1;
 }
-.card_slider .slick-prev,.card_slider .slick-next{
-background-color: black;
-border-radius: 100%;
-width: 19px;
-height: 19px;
 
+.card_slider .slick-prev,
+.card_slider .slick-next {
+  background-color: black;
+  border-radius: 100%;
+  width: 19px;
+  height: 19px;
+
+}
+
+
+.card_slider .slick-slide div:has(.cardParent_btn) {
+  position: absolute;
+  min-height: 95%;
+  width: 100%;
+}
+
+.cardParent_btn{
+  position: inherit;
+  min-height: 100%;
 }

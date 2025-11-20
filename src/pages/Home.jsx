@@ -123,16 +123,16 @@ const Home = () => {
 
 
 
-  function removeextradiv() {
-    const parentElements = document.querySelectorAll(".cardParent");
+  // function removeextradiv() {
+  //   const parentElements = document.querySelectorAll(".cardParent");
 
-    parentElements.forEach(el => {
-      let parent = el.parentElement;
-      if (!parent) return;
-      if (parent.classList.contains("slick-slide")) return;
-      parent.replaceWith(el);
-    });
-  }
+  //   parentElements.forEach(el => {
+  //     let parent = el.parentElement;
+  //     if (!parent) return;
+  //     if (parent.classList.contains("slick-slide")) return;
+  //     parent.replaceWith(el);
+  //   });
+  // }
 
 
 
@@ -155,7 +155,7 @@ const Home = () => {
     autoplaySpeed: 30000, //time of slide stop
   };
 
-  removeextradiv()
+  // removeextradiv()
 
 
 
@@ -178,12 +178,14 @@ const Home = () => {
             <Slider {...settings}>
               {
                 show.map((product) => (
-                  <Card cardDiscountPercentage={product.discountPercentage} cardIMg={product.images[0]} cardTitle={product.title} cardPrice={product.price} cardOriginalPrice={getOriginalPrice(product.discountPercentage, product.price)} cardReview={product.reviews.length} />
+                  // <div className="productopen" onClick={() => console.log(product.id)}>
+                    <Card cardDiscountPercentage={product.discountPercentage} cardIMg={product.images[0]} cardTitle={product.title} cardPrice={product.price} cardOriginalPrice={getOriginalPrice(product.discountPercentage, product.price)} cardReview={product.reviews.length}  onClick={() => console.log(product.id)} />
+                  // </div>
                 ))
               }
               {show.length < AllCardData.length &&
 
-                <Button btnText="View All Products" className="mx-auto text-center cardParent " onClick={LoadData} />
+                <Button btnText="Load More" className="mx-auto text-center cardParent_btn " onClick={LoadData} />
               }
 
             </Slider>
