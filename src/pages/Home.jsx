@@ -159,6 +159,16 @@ const Home = () => {
 
 
 
+  function HandleAddToCart(id) {
+    console.log("Add to cart clicked for product id:", id);
+  }
+
+
+
+
+
+
+
   return (
     <>
 
@@ -178,9 +188,9 @@ const Home = () => {
             <Slider {...settings}>
               {
                 show.map((product) => (
-                  // <div className="productopen" onClick={() => console.log(product.id)}>
-                    <Card cardDiscountPercentage={product.discountPercentage} cardIMg={product.images[0]} cardTitle={product.title} cardPrice={product.price} cardOriginalPrice={getOriginalPrice(product.discountPercentage, product.price)} cardReview={product.reviews.length}  onClick={() => console.log(product.id)} />
-                  // </div>
+
+                  <Card id={product.id} cardDiscountPercentage={product.discountPercentage} cardIMg={product.images[0]} cardTitle={product.title} cardPrice={product.price} cardOriginalPrice={getOriginalPrice(product.discountPercentage, product.price)} cardReview={product.reviews.length} onAddToCart={(id)=>(console.log("Add to cart clicked for product id:", id))} onCardClick={(id)=>(console.log("On cart clicked :", id))} />
+
                 ))
               }
               {show.length < AllCardData.length &&
@@ -190,12 +200,6 @@ const Home = () => {
 
             </Slider>
 
-
-
-
-            {/* <div className="text-center mt-5">
-              <Button btnText="View All Products" className="mx-auto text-center" onClick={LoadData} />
-            </div> */}
           </div>
 
 
