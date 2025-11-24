@@ -5,7 +5,7 @@ const Button = ({ btnAlign, className, onClick, btnText }) => {
 
     <div className={`text-${btnAlign}`}>
       <button
-        className={`bg-[var(--redColor)] text-white text-base px-9 py-3.5 rounded hover:opacity-70 inline-block cursor-pointer ${className}`}
+        className={`bg-(--redColor) text-white text-base px-9 py-3.5 rounded hover:opacity-70 inline-block cursor-pointer ${className}`}
         onClick={onClick || console.log("Working Button")} // forward the click event
       >
         {btnText}

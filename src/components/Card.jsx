@@ -20,7 +20,7 @@ const Card = ({ id, cardDiscountPercentage, cardIMg, cardTitle, cardOriginalPric
             <div className="cardImg bg-gray-100 relative overflow-hidden tran ">
                 <i className="fa-sharp fa-light fa-heart absolute right-3 top-3 p-2 bg-white rounded-full"></i>
                 <i className="fa-sharp fa-light fa-eye absolute right-3 top-14 p-2 bg-white rounded-full"></i>
-                <p className="px-3 py-1.5 text-xs rounded absolute left-4 top-2 bg-[var(--redColor)] text-white">{Math.round(cardDiscountPercentage)} %</p>
+                <p className="px-3 py-1.5 text-xs rounded absolute left-4 top-2 bg-(--redColor) text-white">{Math.round(cardDiscountPercentage)} %</p>
                 <img src={cardIMg} alt="" className='mx-auto' />
                 <button className='AddToCart py-2.5 bg-black w-full cursor-pointer text-white rounded-b absolute -bottom-20 ' onClick={handleAddClick}  >Add To Cart </button>
             </div>
@@ -28,7 +28,7 @@ const Card = ({ id, cardDiscountPercentage, cardIMg, cardTitle, cardOriginalPric
             <div className="cardDetails px-3">
                 <h4 className='text-base my-2'>{cardTitle}</h4>
                 <div className="flex items-center">
-                    <p className="text-[var(--redColor)] font-semibold my-2">$ {cardPrice}</p>
+                    <p className="text-(--redColor) font-semibold my-2">$ {cardPrice}</p>
                     <p className="text-gray-600 font-semibold my-2 line-through ml-3.5">$ {cardOriginalPrice || cardPrice}</p>
                 </div>
                 <p className='ratings flex items-center my-2 pb-2.5'>
