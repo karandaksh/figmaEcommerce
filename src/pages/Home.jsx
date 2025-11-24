@@ -8,6 +8,14 @@ import Slider from 'react-slick'
 import { Link } from 'react-router'
 import Button from '../components/Button'
 
+import { useNavigate } from 'react-router'
+import { categoryimages } from "../components/categoryImages";
+import Category from '../components/Category'
+
+
+
+
+
 
 // useEffect(() => {
 
@@ -65,6 +73,38 @@ const Home = () => {
   const [show, setShow] = useState([]);
   const [elimit, setElimit] = useState(10);
   const [AllCardData, setAllCardData] = useState([]);
+
+
+  const navigateLink = useNavigate();
+
+
+  // const categoriesData = [
+  //   { CategoryId: "Cat_1", CategoryName: "Phones", CategoryLink: "https://www.google.com", CategoryImg: categoryimages.phone },
+  //   { CategoryId: "Cat_2", CategoryName: "Computers", CategoryLink: "https://www.google.com", CategoryImg: categoryimages.phone },
+  //   { CategoryId: "Cat_3", CategoryName: "SmartWacth", CategoryLink: "https://www.google.com", CategoryImg: categoryimages.phone },
+  //   { CategoryId: "Cat_4", CategoryName: "Camera", CategoryLink: "https://www.google.com", CategoryImg: categoryimages.phone },
+  //   { CategoryId: "Cat_4", CategoryName: "HeadPhones", CategoryLink: "https://www.google.com", CategoryImg: categoryimages.phone },
+  //   { CategoryId: "Cat_4", CategoryName: "Gaming", CategoryLink: "https://www.google.com", CategoryImg: categoryimages.phone },
+  // ]
+
+  const categoriesData = [
+    { CategoryId: "Cat_1", CategoryName: "Phones", CategoryImg: categoryimages.phone, CategoryLink: "category/Phones", },
+    { CategoryId: "Cat_2", CategoryName: "Computers", CategoryImg: categoryimages.computer, CategoryLink: "category/Computers", },
+    { CategoryId: "Cat_3", CategoryName: "SmartWatch", CategoryImg: categoryimages.smartwatch, CategoryLink: "category/SmartWatch", },
+    { CategoryId: "Cat_4", CategoryName: "Camera", CategoryImg: categoryimages.camera, CategoryLink: "category/Camera", },
+    { CategoryId: "Cat_5", CategoryName: "HeadPhones", CategoryImg: categoryimages.headphone, CategoryLink: "category/HeadPhones", },
+    { CategoryId: "Cat_6", CategoryName: "Gaming", CategoryImg: categoryimages.games, CategoryLink: "category/Gaming", },
+    { CategoryId: "Cat_5", CategoryName: "HeadPhones", CategoryImg: categoryimages.headphone, CategoryLink: "category/HeadPhones", },
+    { CategoryId: "Cat_4", CategoryName: "Camera", CategoryImg: categoryimages.camera, CategoryLink: "category/Camera", },
+    { CategoryId: "Cat_3", CategoryName: "SmartWatch", CategoryImg: categoryimages.smartwatch, CategoryLink: "category/SmartWatch", },
+  ];
+
+
+
+
+
+
+
 
 
   let ApiUrl = 'https://dummyjson.com/products';
@@ -147,7 +187,7 @@ const Home = () => {
     infinite: false,
     arrows: true,
     slidesToShow: 4.5,
-    pauseOnHover: true,
+    pauseOnHover: false,
     centerMode: false,
     swipeToSlide: true,
     autoplay: false,
@@ -159,9 +199,9 @@ const Home = () => {
 
 
 
-  function HandleAddToCart(id) {
-    console.log("Add to cart clicked for product id:", id);
-  }
+  // function HandleAddToCart(id) {
+  //   console.log("Add to cart clicked for product id:", id);
+  // }
 
 
 
@@ -183,24 +223,69 @@ const Home = () => {
             </div>
           </div>
 
-          <PageSection sectionType="Today's" sectionHeading="Flash Sales" />
+          <PageSection sectionType="Today's" sectionHeading="Flash Sales" showCountdown={true} viewBtn={false} />
           <div className='card_slider'>
             <Slider {...settings}>
               {
                 show.map((product) => (
 
-                  <Card id={product.id} cardDiscountPercentage={product.discountPercentage} cardIMg={product.images[0]} cardTitle={product.title} cardPrice={product.price} cardOriginalPrice={getOriginalPrice(product.discountPercentage, product.price)} cardReview={product.reviews.length} onAddToCart={(id)=>(console.log("Add to cart clicked for product id:", id))} onCardClick={(id)=>(console.log("On cart clicked :", id))} />
+                  <Card id={product.id} cardDiscountPercentage={product.discountPercentage} cardIMg={product.images[0]} cardTitle={product.title} cardPrice={product.price} cardOriginalPrice={getOriginalPrice(product.discountPercentage, product.price)} cardReview={product.reviews.length} onAddToCart={(id) => (id)} onCardClick={(id) => (console.log("On cart clicked :", id))} />
 
                 ))
               }
               {show.length < AllCardData.length &&
-
                 <Button btnText="Load More" className="mx-auto text-center cardParent_btn " onClick={LoadData} />
               }
 
             </Slider>
 
           </div>
+          <Button btnText="View All Product" btnAlign="center" onClick={() => navigateLink("/AllProducts")} className="mt-10" />
+
+          <div className="border-b mt-14 border-gray-400"></div>
+
+          {/* First Section Complete There */}
+
+
+
+          <PageSection sectionType="Categories" sectionHeading="Browse By Category" />
+
+
+
+          {/* <div className="grid grid-cols-6 gap-8"> */}
+          <Slider {...settings} slidesToShow={6} infinite={true} >
+
+
+            {categoriesData.map((catdata) => (
+              <Category CategoryImg={catdata.CategoryImg} CategoryName={catdata.CategoryName} CategoryLink={catdata.CategoryLink} CategoryId={catdata.CategoryId} />
+            ))}
+
+
+          </Slider>
+
+          <div className="border-b mt-14 border-gray-400"></div>
+          {/* </div> */}
+
+
+
+
+
+          <PageSection sectionType="This Month" sectionHeading="Best Selling Products" viewBtn={true} PageSecbtnText="View All" PageSecbtnLink="/about" />
+
+
+          <Slider  slidesToShow={4} infinite={false}>
+            {
+              show.map((product) => (
+
+                <Card id={product.id} cardDiscountPercentage={product.discountPercentage} cardIMg={product.images[0]} cardTitle={product.title} cardPrice={product.price} cardOriginalPrice={getOriginalPrice(product.discountPercentage, product.price)} cardReview={product.reviews.length} onAddToCart={(id) => (id)} onCardClick={(id) => (console.log("On cart clicked :", id))} />
+
+              ))
+            }
+            {show.length < AllCardData.length &&
+              <Button btnText="Load More" className="mx-auto text-center cardParent_btn " onClick={LoadData} />
+            }
+
+          </Slider>
 
 
 
