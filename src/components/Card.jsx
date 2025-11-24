@@ -5,6 +5,7 @@ const Card = ({ id, cardDiscountPercentage, cardIMg, cardTitle, cardOriginalPric
     const handleAddClick = (e) => {
         e.stopPropagation();
         onAddToCart(id);  // Now id is defined
+        console.log("this is print on the Card.jsx HandleAddClick Function ", id);
     };
 
     const handleOnCardClick = (e) => {

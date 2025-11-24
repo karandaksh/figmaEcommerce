@@ -1,9 +1,13 @@
 import React from 'react'
 import SectionHeading from './SectionHeading'
 
-
-
 import { useState, useEffect } from "react";
+import Button from './Button';
+import { useNavigate } from 'react-router';
+
+
+
+
 
 function Countdown() {
     // 👉 Apni target date yahan set karo
@@ -54,18 +58,51 @@ function Countdown() {
 
 
 
-const PageSection = (props) => {
+// const PageSection = (props) => {
+//     return (
+//         <>
+//             <div className="pt-20 pb-10">
+//                 <SectionHeading sectionType={props.sectionType} sectionHeading={props.sectionHeading} parentClass="flex justify-between w-1/5" >
+//                 {props.Countdown ={false} ? <Countdown  /> :"" }
+//                     {/* <Countdown  /> */}
+//                 </SectionHeading>
+
+//             </div>
+
+//         </>
+//     )
+// }
+
+
+
+const PageSection = ({ sectionType, sectionHeading, showCountdown = false, viewBtn = false, PageSecbtnText, PageSecbtnLink }) => {
+
+    const navigate = useNavigate()
+
+    const handleClickBtn = () => {
+        navigate(PageSecbtnLink)
+        console.log(PageSecbtnLink);
+
+    }
+
+
     return (
-        <>
-            <div className="py-20">
-                <SectionHeading sectionType={props.sectionType} sectionHeading={props.sectionHeading} parentClass="flex justify-between w-1/5" >
-                    <Countdown  />
-                </SectionHeading>
+        <div className={`pt-20 pb-10 ${viewBtn ? "flex justify-between items-end" : ""}`}>
+            <SectionHeading
+                sectionType={sectionType}
+                sectionHeading={sectionHeading}
+                parentClass="flex justify-between w-1/5"
+            >
+                {showCountdown && <Countdown />}
+            </SectionHeading>
 
-            </div>
+            {viewBtn && <Button btnText={PageSecbtnText} btnAlign="center" onClick={handleClickBtn} className="mt-10" />}
 
-        </>
-    )
-}
+        </div>
+
+    );
+};
+
+
 
 export default PageSection

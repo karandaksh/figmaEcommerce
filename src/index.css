@@ -93,4 +93,9 @@
 .cardParent_btn{
   position: inherit;
   min-height: 100%;
+  /* min-width: 4%; */
+}
+
+.category:hover img{
+   filter: invert()
 }
