@@ -10,6 +10,7 @@ import Button from '../components/Button'
 
 import { useNavigate } from 'react-router'
 import { categoryimages } from "../components/categoryImages";
+// import Category from '../Trash/Category_Trash'
 import Category from '../components/Category'
 
 
@@ -273,7 +274,7 @@ const Home = () => {
           <PageSection sectionType="This Month" sectionHeading="Best Selling Products" viewBtn={true} PageSecbtnText="View All" PageSecbtnLink="/about" />
 
 
-          <Slider  slidesToShow={4} infinite={false}>
+          <Slider slidesToShow={4} infinite={false}>
             {
               show.map((product) => (
 
