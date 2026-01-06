@@ -90,12 +90,18 @@
   width: 100%;
 }
 
-.cardParent_btn{
+.cardParent_btn {
   position: inherit;
   min-height: 100%;
   /* min-width: 4%; */
 }
 
-.category:hover img{
-   filter: invert()
+.category:hover img {
+  filter: invert()
+}
+
+
+
+.jblBG {
+  background: radial-gradient(circle at 71% 50%, #737070 0%, #000000 28%);
 }
