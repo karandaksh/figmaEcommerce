@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router'
 import { categoryimages } from "../components/categoryImages";
 // import Category from '../Trash/Category_Trash'
 import Category from '../components/Category'
+import JBLCountDown from '../components/JBLCountDown'
 
 
 
@@ -224,7 +225,7 @@ const Home = () => {
             </div>
           </div>
 
-          <PageSection sectionType="Today's" sectionHeading="Flash Sales" showCountdown={true} viewBtn={false} />
+          <PageSection sectionType="Today's" sectionHeading="Flash Sales" showCountdown={true} viewBtn={false} countdowntime="31 Jan 2026 8:00 PM" />
           <div className='card_slider'>
             <Slider {...settings}>
               {
@@ -287,6 +288,9 @@ const Home = () => {
             }
 
           </Slider>
+
+          <JBLCountDown/>
+
 
 
 
