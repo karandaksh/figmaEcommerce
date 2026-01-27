@@ -13,6 +13,7 @@ import { categoryimages } from "../components/categoryImages";
 // import Category from '../Trash/Category_Trash'
 import Category from '../components/Category'
 import JBLCountDown from '../components/JBLCountDown'
+import DualCard from '../components/DualCard'
 
 
 
@@ -289,7 +290,54 @@ const Home = () => {
 
           </Slider>
 
-          <JBLCountDown/>
+
+
+          <JBLCountDown />
+
+
+
+          <PageSection sectionType="Our Products" sectionHeading="Explore Our Products" />
+
+
+
+          {/* <Slider slidesToShow={4} infinite={false}>
+            {
+              show.map((product,index) => (
+                if(index%2 !== 0) return null
+
+                <Card id={product.id} cardDiscountPercentage={product.discountPercentage} cardIMg={product.images[0]} cardTitle={product.title} cardPrice={product.price} cardOriginalPrice={getOriginalPrice(product.discountPercentage, product.price)} cardReview={product.reviews.length} onAddToCart={(id) => (id)} onCardClick={(id) => (console.log("On cart clicked :", id))} />
+
+              ))
+            }
+            {show.length < AllCardData.length &&
+              <Button btnText="Load More" className="mx-auto text-center cardParent_btn " onClick={LoadData} />
+            }
+
+          </Slider> */}
+
+          <Slider slidesToShow={4} infinite={false} arrows={true} className='arrowColor'>
+            
+            {
+              show.map((product, index) => {
+                if (index % 2 !== 0) return null; // odd index skip
+
+                return (
+                  <DualCard
+                    key={product.id}
+                    product1={show[index]}
+                    product2={show[index + 1]}
+                    getOriginalPrice={getOriginalPrice}
+                  />
+                );
+              })
+            }
+
+            {show.length < AllCardData.length &&
+              <Button btnText="Load More" className="mx-auto text-center cardParent_btn " onClick={LoadData} />
+            }
+
+          </Slider>
+
 
 
 
