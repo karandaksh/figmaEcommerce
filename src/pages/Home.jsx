@@ -341,7 +341,7 @@ const Home = () => {
 
 
 
-          <PageSection sectionType="Our Products" sectionHeading="Explore Our Products" />
+          <PageSection sectionType="Featured" sectionHeading="New Arrival" />
 
 
 
