@@ -14,6 +14,7 @@ import { categoryimages } from "../components/categoryImages";
 import Category from '../components/Category'
 import JBLCountDown from '../components/JBLCountDown'
 import DualCard from '../components/DualCard'
+import Arrival from '../components/Arrival'
 
 
 
@@ -316,7 +317,7 @@ const Home = () => {
           </Slider> */}
 
           <Slider slidesToShow={4} infinite={false} arrows={true} className='arrowColor'>
-            
+
             {
               show.map((product, index) => {
                 if (index % 2 !== 0) return null; // odd index skip
@@ -342,6 +343,9 @@ const Home = () => {
 
 
           <PageSection sectionType="Featured" sectionHeading="New Arrival" />
+
+
+          <Arrival />
 
 
 
