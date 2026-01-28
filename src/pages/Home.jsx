@@ -341,6 +341,9 @@ const Home = () => {
 
 
 
+          <PageSection sectionType="Featured" sectionHeading="New Arrival" />
+
+
 
         </div>
       </div>
