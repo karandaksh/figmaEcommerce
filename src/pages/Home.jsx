@@ -341,6 +341,9 @@ const Home = () => {
 
 
 
+          <PageSection sectionType="Our Products" sectionHeading="Explore Our Products" />
+
+
 
         </div>
       </div>
