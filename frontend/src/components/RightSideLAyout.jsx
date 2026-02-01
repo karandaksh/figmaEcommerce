@@ -2,6 +2,10 @@ import React from 'react'
 import Slider from "react-slick";
 import CarouselImage from './carousel/CarouselImage';
 
+import iphoneLogo from '../assets/img/apple_logo.png';
+import iphone from '../assets/img/iphone.png'
+
+
 
 const RightSideLAyout = () => {
 
@@ -24,25 +28,25 @@ const RightSideLAyout = () => {
 
   const CaruselData = [
     {
-      companyLogo: "../../src/assets/img/apple_logo.png",
+      companyLogo: iphoneLogo,
       productName: "iPhone 14 Series",
       productHeading: "Up to 10% off Voucher",
       productLink: "https://www.apple.in",
-      productPhoto: "../../src/assets/img/iphone.png"
+      productPhoto: iphone
     },
     {
-      companyLogo: "../../src/assets/img/apple_logo.png",
+      companyLogo: iphoneLogo,
       productName: "iPhone 14 Series",
       productHeading: "Up to 10% off Voucher",
       productLink: "https://www.apple.in",
-      productPhoto: "../../src/assets/img/iphone.png"
+      productPhoto: iphone
     },
     {
-      companyLogo: "../../src/assets/img/apple_logo.png",
+      companyLogo: iphoneLogo,
       productName: "iPhone 14 Series",
       productHeading: "Up to 10% off Voucher",
       productLink: "https://www.apple.in",
-      productPhoto: "../../src/assets/img/iphone.png"
+      productPhoto: iphone
     },
   ];
 
