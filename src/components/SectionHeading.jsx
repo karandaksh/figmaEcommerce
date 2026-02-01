@@ -5,7 +5,7 @@ const SectionHeading = ({ children, sectionType, sectionHeading, parentClass }) 
         <>
             <div className={`sectionType items-end gap-16 ${children ? "flex" : ""}`}>
                 <div className="sectionTitle">
-                    <span className='bg-[var(--redColor)] p-2.5 rounded'></span>
+                    <span className='bg-(--redColor) p-2.5 rounded'></span>
                     <span className='pl-4 text-[#DB4444] text-base font-semibold'>
                         {sectionType}
                     </span>
