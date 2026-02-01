@@ -8,7 +8,7 @@ import perfume from '../assets/img/gucciPerfume.png'
 
 const Arrival = ({ CardBg, CardContent, CardTitle, CardDetail, CardButton }) => {
     return (
-        <div className='grid grid-cols-2 gap-10'>
+        <div className='grid grid-cols-2 gap-6'>
 
             <div className="col-span-1">
                 <div className="arrivalCard relative bg-[#0d0d0d] text-center" >
@@ -37,7 +37,7 @@ const Arrival = ({ CardBg, CardContent, CardTitle, CardDetail, CardButton }) => 
                 </div>
 
 
-                <div className="grid grid-cols-2 gap-4 grid-flow-row mt-5">
+                <div className="grid grid-cols-2 gap-6 grid-flow-row mt-6">
                     <div className="col-span-1">
 
                         <div className="arrivalCard relative bg-[#0d0d0d] text-center" >
