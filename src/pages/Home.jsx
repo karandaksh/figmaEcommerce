@@ -15,6 +15,7 @@ import Category from '../components/Category'
 import JBLCountDown from '../components/JBLCountDown'
 import DualCard from '../components/DualCard'
 import Arrival from '../components/Arrival'
+import Details from '../components/Details'
 
 
 
@@ -346,6 +347,8 @@ const Home = () => {
 
 
           <Arrival />
+
+          <Details />
 
 
 
