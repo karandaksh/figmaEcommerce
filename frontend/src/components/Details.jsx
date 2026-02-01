@@ -30,9 +30,9 @@ const Details = () => {
 
     return (
         <div className="grid grid-cols-3 gap-4 py-30">
-            {detailsData.map((item) => {
+            {detailsData.map((item,index) => {
                 return (
-                    <div className="col-span-1">
+                    <div className="col-span-1" key={index}>
                         <div className="termCardParent text-center">
                             <img src={item.image} alt="" className='mx-auto mb-5'/>
                             <h4 className="text-xl mb-2 font-semibold">{item.title}</h4>
