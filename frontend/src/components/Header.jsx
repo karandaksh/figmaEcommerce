@@ -36,7 +36,7 @@ const Header = () => {
     return (
         <>
             <Topbar />
-            <div className="md:px-20 border-b border-0">
+            <div className="md:px-20 border-b border-0 bg-white text-black dark:bg-neutral-900 dark:text-white">
                 <div className="xl:container mx-auto ">
                     <div className="grid grid-cols-12 gap-4 py-6">
                         <div className="col-span-4">
@@ -47,7 +47,7 @@ const Header = () => {
                                 {
                                     menus.map((data) => {
                                         return (
-                                            <NavLink key={data.id} className={({ isActive }) => `pr-8 mr-4 ${isActive ? "underline" : "text-black"}`} to={data.href} > {data.names}</NavLink>
+                                            <NavLink key={data.id} className={({ isActive }) => `pr-8 mr-4 dark:text-white ${isActive ? "underline" : "text-black"}`} to={data.href} > {data.names}</NavLink>
                                             // <NavLink key={data.id} className={({ isActive }) => `pr-8 mr-4 ${isActive ? "underline" : "text-black"}`} to={data.href} onClick={({ isActive }) => isActive ? "underline text-red-500" : " text-green"}> {data.names}</NavLink>
                                         )
                                     })
@@ -58,7 +58,7 @@ const Header = () => {
 
                             <div className="flex justify-between items-center">
                                 <div className="inline-flex relative items-center">
-                                    <input id='Menusearch' name='Menusearch' type='text' className='Menusearch bg-gray-200 pl-6 pr-10 py-2 text-xs rounded' placeholder='What are you looking for?' value={searchVal} onChange={handleSearch} />
+                                    <input id='Menusearch' name='Menusearch' type='text' className='Menusearch dark:bg-transparent dark:border-white dark:border bg-gray-200 pl-6 pr-10 py-2 text-xs rounded' placeholder='What are you looking for?' value={searchVal} onChange={handleSearch} />
                                     <button onClick={Search} className='absolute end-0 pr-3 '>
                                         <i className="fa-solid fa-magnifying-glass"></i>
                                     </button>
