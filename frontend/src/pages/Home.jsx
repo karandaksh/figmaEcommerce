@@ -217,8 +217,8 @@ const Home = () => {
   return (
     <>
 
-      <div className="md:px-20 dark:bg-neutral-900 dark:text-white ">
-      {/* <div className="md:px-20"> */}
+      {/* <div className="md:px-20 dark:bg-neutral-900 dark:text-white "> */}
+      <div className="md:px-20 dark:bg-(--darkColor) dark:text-white">
         <div className="xl:container mx-auto">
           <div className="grid grid-cols-6 gap-4 pb-20">
             <div className="col-span-1 border-r pt-10">

@@ -36,7 +36,8 @@ const Header = () => {
     return (
         <>
             <Topbar />
-            <div className="md:px-20 border-b border-0 bg-white text-black dark:bg-neutral-900 dark:text-white">
+            {/* <div className="md:px-20 border-b border-0 bg-white text-black dark:bg-neutral-900 dark:text-white"> */}
+            <div className="md:px-20 border-b border-0 bg-white text-black dark:bg-(--darkColor) dark:text-white">
                 <div className="xl:container mx-auto ">
                     <div className="grid grid-cols-12 gap-4 py-6">
                         <div className="col-span-4">
