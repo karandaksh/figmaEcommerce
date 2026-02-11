@@ -11,7 +11,7 @@ const Arrival = ({ CardBg, CardContent, CardTitle, CardDetail, CardButton }) => 
         <div className='grid grid-cols-2 gap-6'>
 
             <div className="col-span-1">
-                <div className="arrivalCard relative bg-[#0d0d0d] text-center" >
+                <div className="arrivalCard relative bg-[#0d0d0d] text-center dark:border " >
                     <img src={play} alt="playstation" className='mx-auto pt-20' />
                     <div className="absolute h-full w-full top-0 z-10">
                         <div className="content w-2/5 text-left absolute bottom-8 left-8 text-white">
@@ -25,7 +25,7 @@ const Arrival = ({ CardBg, CardContent, CardTitle, CardDetail, CardButton }) => 
 
             <div className="col-span-1">
 
-                <div className="arrivalCard relative bg-[#0d0d0d] text-center" >
+                <div className="arrivalCard relative bg-[#0d0d0d] text-center dark:border " >
                     <img src={women} alt="playstation" className='ml-auto' />
                     <div className="absolute h-full w-full top-0 z-10">
                         <div className="content w-2/5 text-left absolute bottom-8 left-8 text-white">
@@ -40,7 +40,7 @@ const Arrival = ({ CardBg, CardContent, CardTitle, CardDetail, CardButton }) => 
                 <div className="grid grid-cols-2 gap-6 grid-flow-row mt-6">
                     <div className="col-span-1">
 
-                        <div className="arrivalCard relative bg-[#0d0d0d] text-center" >
+                        <div className="arrivalCard relative bg-[#0d0d0d] text-center dark:border " >
                             <img src={speaker} alt="playstation" className='mx-auto pt-16' />
                             <div className="absolute h-full w-full top-0 z-10">
                                 <div className="content text-left absolute bottom-8 left-8 text-white">
@@ -54,7 +54,7 @@ const Arrival = ({ CardBg, CardContent, CardTitle, CardDetail, CardButton }) => 
 
                     <div className="col-span-1">
 
-                        <div className="arrivalCard relative bg-[#0d0d0d] text-center" >
+                        <div className="arrivalCard relative bg-[#0d0d0d] text-center dark:border " >
                             <img src={perfume} alt="playstation" className='mx-auto pt-16' />
                             <div className="absolute h-full w-full top-0 z-10">
                                 <div className="content text-left absolute bottom-8 left-8 text-white">

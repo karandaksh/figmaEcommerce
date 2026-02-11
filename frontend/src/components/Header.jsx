@@ -34,7 +34,7 @@ const Header = () => {
 
 
     return (
-        <>
+        <div className=' sticky top-0 z-50'>
             <Topbar />
             {/* <div className="md:px-20 border-b border-0 bg-white text-black dark:bg-neutral-900 dark:text-white"> */}
             <div className="md:px-20 border-b border-0 bg-white text-black dark:bg-(--darkColor) dark:text-white">
@@ -77,7 +77,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

@@ -11,7 +11,7 @@ function handleBook(){
 
 const JBLCountDown = () => {
   return (
-    <div className='jblBG text-white p-15'>
+    <div className='jblBG text-white p-15 dark:border'>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         <div className="col-span-1">
           <p className="text-green-500 font-semibold">Categories</p>
