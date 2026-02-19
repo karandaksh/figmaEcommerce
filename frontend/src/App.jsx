@@ -2,12 +2,15 @@ import { RouterProvider, Route, createBrowserRouter, createRoutesFromElements, N
 
 
 
-import Home from './pages/Home.jsx'
-import About from './pages/About.jsx'
-import Layout from './components/Layout.jsx'
-import Signup from './pages/Signup.jsx'
-import Contact from './pages/Contact.jsx'
-import NotFound from './pages/NotFound.jsx'
+import Home from './pages/Home.jsx';
+import About from './pages/About.jsx';
+import Layout from './components/Layout.jsx';
+import Signup from './pages/Signup.jsx';
+import Contact from './pages/Contact.jsx';
+import NotFound from './pages/NotFound.jsx';
+import Favorites from './pages/Favorites.jsx';
+import AddToCart from './pages/AddToCart.jsx';
+import AllProducts from './pages/AllProducts.jsx';
 
 
 function App() {
@@ -23,6 +26,9 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/favorites' element={<Favorites />} />
+        <Route path='/addtocart' element={<AddToCart />} />
+        <Route path='/allproducts' element={<AllProducts />} />
       </Route>
 
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Topbar from './Topbar'
-import { NavLink } from 'react-router'
+import { Link, NavLink } from 'react-router'
 
 const Header = () => {
 
@@ -34,14 +34,14 @@ const Header = () => {
 
 
     return (
-        <div className=' sticky top-0 z-50'>
+        <div className='sticky top-0 z-50 shadow-xl dark:shadow-0'>
             <Topbar />
             {/* <div className="md:px-20 border-b border-0 bg-white text-black dark:bg-neutral-900 dark:text-white"> */}
             <div className="md:px-20 border-b border-0 bg-white text-black dark:bg-(--darkColor) dark:text-white">
                 <div className="xl:container mx-auto ">
                     <div className="grid grid-cols-12 gap-4 py-6">
                         <div className="col-span-4">
-                            <h3 className='text-2xl'>Exclusive</h3>
+                            <Link to='/home'> <h3 className='text-2xl'>Exclusive</h3> </Link>
                         </div>
                         <div className="col-span-4">
                             <div className="flex ">
@@ -64,13 +64,24 @@ const Header = () => {
                                         <i className="fa-solid fa-magnifying-glass"></i>
                                     </button>
                                 </div>
-                                <div className="favorite text-lg cursor-pointer" onClick={() => { setFavorite(!favorite) }} >
+                                {/* <div className="favorite text-lg cursor-pointer" onClick={() => { setFavorite(!favorite) }} >
                                     {favorite ?(<i className="fa-solid fa-heart"></i> ) : (<i className="fa-sharp fa-regular fa-heart"></i>)}
+                                </div> */}
+                                <div className="favorite text-lg cursor-pointer" >
+                                    <Link to='/favorites' >
+                                        <i className="fa-sharp fa-regular fa-heart"></i>
+                                    </Link>
                                 </div>
 
 
                                 {/* <i className="fa-sharp fa-regular fa-heart" onClick={({ isActive }) => isActive ? <i class="fa-sharp fa-regular fa-heart"></i> : <i class="fa-solid fa-heart"></i>}></i> */}
-                                <div className="cart text-lg cursor-pointer"><i className="fa-sharp fa-light fa-cart-shopping"></i></div>
+                                {/* <div className="cart text-lg cursor-pointer"><i className="fa-sharp fa-light fa-cart-shopping"></i></div> */}
+                                
+                                <div className="cart text-lg cursor-pointer">
+                                    <Link to='/addtocart'>
+                                        <i className="fa-sharp fa-light fa-cart-shopping"></i>
+                                    </Link>
+                                </div>
                             </div>
 
                         </div>
