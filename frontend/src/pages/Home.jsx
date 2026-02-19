@@ -16,7 +16,7 @@ import JBLCountDown from '../components/JBLCountDown'
 import DualCard from '../components/DualCard'
 import Arrival from '../components/Arrival'
 import Details from '../components/Details'
-
+import CardSkeleton from '../components/CardSkeleton'
 
 
 
@@ -74,11 +74,12 @@ import Details from '../components/Details'
 
 const Home = () => {
 
-  const [slimit, setSlimit] = useState(0);
   const [show, setShow] = useState([]);
+  const [slimit, setSlimit] = useState(0);
   const [elimit, setElimit] = useState(10);
   const [AllCardData, setAllCardData] = useState([]);
 
+  const [loading, setLoading] = useState(true);
 
   const navigateLink = useNavigate();
 
@@ -123,6 +124,7 @@ const Home = () => {
         }
         let dataJson = await data.json();
         setShow(dataJson.products.slice(slimit, elimit));
+        setLoading(false);
         setAllCardData(dataJson.products);
       }
       catch (err) {
@@ -191,13 +193,41 @@ const Home = () => {
     // infinite: true,
     infinite: false,
     arrows: true,
-    slidesToShow: 4.5,
+    slidesToShow: 5,
     pauseOnHover: false,
     centerMode: false,
     swipeToSlide: true,
     autoplay: false,
     speed: 1000, //animation speed of move
     autoplaySpeed: 30000, //time of slide stop
+
+   responsive: [
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 4,
+        }
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 575,
+        settings: {
+          slidesToShow: 1,
+        }
+      },
+    ]
+    
   };
 
   // removeextradiv()
@@ -233,14 +263,18 @@ const Home = () => {
           <div className='card_slider'>
             <Slider {...settings}>
               {
-                show.map((product) => (
+                loading ? (
+                  Array(10).fill().map((_, index) => (
+                    <CardSkeleton key={index} />
+                  ))
+                ) : (
 
-                  <Card id={product.id} cardDiscountPercentage={product.discountPercentage} cardIMg={product.images[0]} cardTitle={product.title} cardPrice={product.price} cardOriginalPrice={getOriginalPrice(product.discountPercentage, product.price)} cardReview={product.reviews.length} onAddToCart={(id) => (id)} onCardClick={(id) => (console.log("On cart clicked :", id))} />
-
-                ))
+                  show.map((product) =>
+                    <Card id={product.id} cardDiscountPercentage={product.discountPercentage} cardIMg={product.images[0]} cardTitle={product.title} cardPrice={product.price} cardOriginalPrice={getOriginalPrice(product.discountPercentage, product.price)} cardReview={product.reviews.length} onAddToCart={(id) => (id)} onCardClick={(id) => (console.log("On cart clicked :", id))} />
+                  ))
               }
               {show.length < AllCardData.length &&
-                <Button btnText="Load More" className="mx-auto text-center cardParent_btn " onClick={LoadData} />
+                <Button btnText="Load More" className="dark:text-white mx-auto text-center cardParent_btn " onClick={LoadData} />
               }
 
             </Slider>

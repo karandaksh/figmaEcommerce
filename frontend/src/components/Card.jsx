@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import CardSkeleton from './CardSkeleton';
 
 const Card = ({ id, cardDiscountPercentage, cardIMg, cardTitle, cardOriginalPrice, cardPrice, cardReview, onAddToCart, onCardClick }) => {
 
     const [fav, setFav] = useState(false)
+    const [imgskeleton, setImgskeleton] = useState(true)
 
     const handleAddClick = (e) => {
         e.stopPropagation();
@@ -53,7 +55,11 @@ const Card = ({ id, cardDiscountPercentage, cardIMg, cardTitle, cardOriginalPric
                 {/* <button className='favoriteProduct' onClick={handleAddToFav}> <i className="fa-sharp fa-light fa-heart absolute right-3 top-3 p-2 bg-white rounded-full"></i> </button> */}
                 <i className="fa-sharp fa-light fa-eye absolute right-3 top-14 p-2 bg-white dark:bg-transparent rounded-full"></i>
                 <p className="px-3 py-1.5 text-xs rounded absolute left-4 top-2 bg-(--redColor) text-white">{Math.round(cardDiscountPercentage)} %</p>
-                <img src={cardIMg} alt="" className='mx-auto' />
+
+                {imgskeleton && <i class="fa-regular fa-image fa-fade h-3/4 w-3/4"></i>}
+                
+                <img src={cardIMg} onLoad={()=> setImgskeleton(false)} alt="" loading="lazy" className='mx-auto' />
+                
                 <button className='AddToCart py-2.5 bg-black text-white w-full cursor-pointer rounded-b absolute -bottom-20 dark:bg-red-500' onClick={handleAddClick}  >Add To Cart </button>
             </div>
 
